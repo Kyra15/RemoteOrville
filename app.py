@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from main import Tank
+from tankClass import Tank
 
 tank = Tank()
 app = Flask(__name__)
