@@ -1,15 +1,26 @@
 <html>
 <head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('a#test').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/forward',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+
 <title>Buttons</title>
-</head>
 <body>
 <h1>Directions</h1>
-    <form method="post" action="/">
-        <input type="button" name="stop" value="Stop">Stop</input>
-        <input type="button" name="forward" value="Forward">Forward</input>
-        <input type="button" name="left" value="Left">Left</input>
-        <input type="button" name="right" value="Right">Right</input>
-        <input type="button" name="backward" value="Backward">Backward</input>
-    </form>
+    <button type="button" onclick="stop()">Stop</button>
+    <button type="button" onclick="forward()">Forward</button>
+    <button type="button" onclick="">Left</button>
+    <button type="button" onclick="stop">Right</button>
+    <button type="button" onclick="stop">Backward</button>
 </body>
 </html>

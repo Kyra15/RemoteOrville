@@ -5,7 +5,7 @@ tank = Tank()
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def home():
     if request.method == 'POST':
         if request.form.get('stop') == 'Stop':
@@ -23,6 +23,7 @@ def home():
     elif request.method == 'GET':
         return render_template('index.html')
     return render_template('index.html')
+
 
 
 if __name__ == '__main__':
