@@ -5,29 +5,30 @@ import time
 tank = Tank()
 app = Flask(__name__)
 
+@app.route('/')
+def default():
+    return render_template('index.html')
+    
 
-@app.route('/', methods=['GET'])
+@app.route('/moving', methods=['POST'])
 def home():
-    n = 0
-    while n < 2:
-        time.sleep(0.5)
-        if request.method == 'GET':
-            if request.args.get('button') == "forward":
-                tank.forward()
-            if request.args.get('button') == "go":
-                tank.forward()
-                n -= 1
-            elif request.args.get('button') == "stop":
-                tank.stop()
-                n += 1
-            elif request.args.get('button') == "left":
-                tank.leftturn()
-            elif request.args.get('button') == "right":
-                tank.rightturn()
-            else:
-                tank.stop()
-        return render_template('index.html')
+    button = request.json
+    if button.get('button') == "forward":
+        tank.forward()
+    if button.get('button') == "go":
+        tank.forward()
+    elif button.get('button') == "stop":
+        tank.stop()
+    elif button.get('button') == "left":
+        tank.leftturn()
+    elif button.get('button') == "right":
+        tank.rightturn()
+    elif button.get('button') == "backward":
+        tank.backward()
+    else:
+        tank.stop()
+    return "Moved"
 
 
 if __name__ == '__main__':
-    app.run(debug=True, address="192.168.1.42", port=4200)
+    app.run(debug=True, host=0.0.0.0, port=4200)
