@@ -1,26 +1,29 @@
+<!DOCTYPE html>
 <html>
 <head>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type=text/javascript>
-        $(function() {
-          $('a#test').on('click', function(e) {
-            e.preventDefault()
-            $.getJSON('/forward',
-                function(data) {
-              //do nothing
-            });
-            return false;
-          });
-        });
-</script>
-
 <title>Buttons</title>
+</head>
 <body>
+<script>
+    function postData(input) {
+        fetch('/move', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'button': input })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+            }
+        </script>
 <h1>Directions</h1>
-    <button type="button" onclick="stop()">Stop</button>
-    <button type="button" onclick="forward()">Forward</button>
-    <button type="button" onclick="">Left</button>
-    <button type="button" onclick="stop">Right</button>
-    <button type="button" onclick="stop">Backward</button>
+    <button type="button" onclick="postData('stop')">Stop</button>
+    <button type="button" onclick="postData('forward')">Forward</button>
+    <button type="button" onclick="postData('left')">Left</button>
+    <button type="button" onclick="postData('right')">Right</button>
+    <button type="button" onclick="postData(backward)">Backward</button>
 </body>
 </html>
+

@@ -1,29 +1,32 @@
 from flask import Flask, render_template, request
 from tankClass import Tank
+import time
 
 tank = Tank()
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home():
-    if request.method == 'POST':
-        if request.form.get('stop') == 'Stop':
-            tank.stop()
-        elif request.form.get('forward') == 'Forward':
-            tank.forward()
-        elif request.form.get('left') == "Left":
-            tank.leftturn()
-        elif request.form.get('right') == "Right":
-            tank.rightturn()
-        elif request.form.get('backward') == "Backward":
-            tank.backward()
-        else:
-            tank.stop()
-    elif request.method == 'GET':
+    n = 0
+    while n < 2:
+        time.sleep(0.5)
+        if request.method == 'GET':
+            if request.args.get('button') == "forward":
+                tank.forward()
+            if request.args.get('button') == "go":
+                tank.forward()
+                n -= 1
+            elif request.args.get('button') == "stop":
+                tank.stop()
+                n += 1
+            elif request.args.get('button') == "left":
+                tank.leftturn()
+            elif request.args.get('button') == "right":
+                tank.rightturn()
+            else:
+                tank.stop()
         return render_template('index.html')
-    return render_template('index.html')
-
 
 
 if __name__ == '__main__':
