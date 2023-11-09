@@ -6,7 +6,7 @@
 <body>
 <script>
     function postData(input) {
-        fetch('/move', {
+        fetch('/moving', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,7 +23,7 @@
     <button type="button" onclick="postData('forward')">Forward</button>
     <button type="button" onclick="postData('left')">Left</button>
     <button type="button" onclick="postData('right')">Right</button>
-    <button type="button" onclick="postData(backward)">Backward</button>
+    <button type="button" onclick="postData('backward')">Backward</button>
 </body>
 </html>
 
