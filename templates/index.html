@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Buttons</title>
-</head>
-<body>
+<style>
+/*sets background color to white and text text to black  */
+{background-color:white;
+
+ color: black;}
+</style>
+
 <script>
-    // this function will perform an asynchronous request to the the url given with the added part of /moving 
+// this function will perform an asynchronous request to the the url given with the added part of /moving 
     // and post it in a json format to the 'button' key
     // it will log this data in the console and if there is an error, it will print that instead
     function postData(input) {
@@ -20,15 +24,63 @@
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
             }
-        </script>
-<!--     the 5 buttons used to operate the tank -->
-<h1>Directions</h1>
-    <button type="button" onclick="postData('stop')">Stop</button>
-    <button type="button" onclick="postData('forward')">Go</button>
-    <button type="button" onclick="postData('forward')">Forward</button>
-    <button type="button" onclick="postData('left')">Left</button>
-    <button type="button" onclick="postData('right')">Right</button>
-    <button type="button" onclick="postData('backward')">Backward</button>
-</body>
-</html>
+</script>
+<!--sets a unique id for the body of screen  -->
+<body id="tankgui">
 
+  <!--defines the table and its style for borders  -->
+ <table style = "width:100%;border: 1px solid black;">
+<!--creates text on top left-->
+     <td style = "width:50%;border: 1px solid black;">linefollow</td>
+<!-- defines table dimensions -->
+     <th style="border: 1px solid black;"><table style = "width:100%;">
+
+   <tr style = "height:233px">
+
+     <th style = "width:33%"></th>
+<!--creates forward button  -->
+     <th style = "width:33%"><button id="forwardButton" style="height:175px;width:50%;font-size: 50px;" onclick="send_command('forward')" >&#8593;</button></th>
+
+     <th></th>
+
+   </tr>
+
+   <tr style = "height:100px">
+<!-- creates left button  -->
+     <td><p><button style="height:175px;width:60%;font-size: 55px;" onclick="send_command('left')">&#8592;</button></p></td>
+<!-- creates stop button -->
+     <td><p><button style="height:175px;width:50%;font-size: 50px;background-color: red;" onclick="send_command('stop')">&#9632;</button></p></td>
+     <!--  creates play button-->
+     <td><p><button id="playButton" style="height:175px;width:75%;font-size: 50px;background-color: green;" onclick="send_command('go')">&#9654; </button></p></td>
+     <!-- cerates right button -->
+     <td><p><button style="height:175px;width:90%;font-size: 55px;" onclick="send_command('right')"> &#8594;</button></p></td>
+
+
+
+   </tr>
+
+   <tr style = "height:233px">
+
+     <td></td>
+<!-- creates backward button -->
+     <td><p><button style="height:175px;width:50%;font-size: 50px;" onclick="send_command('backward')">&#8595;</button></p></td>
+
+     <td><p></p></td></table></th>
+
+   </tr>
+
+   <tr style = "height:700px;border: 1px solid black;">
+<!-- creates text on bottom left -->
+     <td style="border: 1px solid black;"><p>camera</p></td>
+<!-- creates text on bottom right -->
+     <td style="border: 1px solid black;"><p>log</p></td>
+
+   </tr>
+
+
+
+ </table>
+
+   </body>
+
+         </html>
