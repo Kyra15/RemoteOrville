@@ -32,6 +32,7 @@ class Tank:
         self.kit.motor1.throttle = -speed1
         self.kit.motor2.throttle = speed2
 
+    # defines the stop function, which just stops the tank's motors
     def stop(self):
         self.kit.motor1.throttle = 0
         self.kit.motor2.throttle = 0
