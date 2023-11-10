@@ -1,9 +1,15 @@
 from flask import Flask, render_template, request
 from tankClass import Tank
+from datetime import date
 import time
 
 tank = Tank()
 app = Flask(__name__)
+date = date.today().strftime("%B %d, %y")
+
+logdict = {}
+
+f.open
 
 @app.route('/')
 def default():
@@ -13,17 +19,17 @@ def default():
 @app.route('/moving', methods=['POST'])
 def home():
     button = request.json
-    if button.get('button') == "forward":
+    pressed = button.get('button')
+    if pressed == "forward" or pressed == "go":
         tank.forward()
-    if button.get('button') == "go":
-        tank.forward()
-    elif button.get('button') == "stop":
+        logdict.append(pressed)
+    elif pressed == "stop":
         tank.stop()
-    elif button.get('button') == "left":
+    elif pressed == "left":
         tank.leftturn()
-    elif button.get('button') == "right":
+    elif pressed == "right":
         tank.rightturn()
-    elif button.get('button') == "backward":
+    elif pressed == "backward":
         tank.backward()
     else:
         tank.stop()
