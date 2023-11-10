@@ -5,6 +5,9 @@
 </head>
 <body>
 <script>
+    // this function will perform an asynchronous request to the the url given with the added part of /moving 
+    // and post it in a json format to the 'button' key
+    // it will log this data in the console and if there is an error, it will print that instead
     function postData(input) {
         fetch('/moving', {
             method: 'POST',
@@ -18,8 +21,10 @@
         .catch(error => console.error('Error:', error));
             }
         </script>
+<!--     the 5 buttons used to operate the tank -->
 <h1>Directions</h1>
     <button type="button" onclick="postData('stop')">Stop</button>
+    <button type="button" onclick="postData('forward')">Go</button>
     <button type="button" onclick="postData('forward')">Forward</button>
     <button type="button" onclick="postData('left')">Left</button>
     <button type="button" onclick="postData('right')">Right</button>
