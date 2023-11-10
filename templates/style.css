@@ -1,0 +1,42 @@
+/* defines all formatting for body */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; 
+}
+/* defines formatting for containers */
+.container {
+  display: grid;
+  grid-template-columns: 50% 50%; 
+  grid-template-rows: 50% 50%; 
+  height: 100vh; 
+  width: 100vw; 
+}
+
+/* defines formatting for sections  */
+.section {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  border: 1px solid #000; 
+  background-color: lightgray;
+}
+
+/*  defines formatting for buttons*/
+.button-container, .button-container2 {
+ 
+}
+
+
+.button, .button2 { 
+  padding: 10px 20px; 
+  margin: 0 10px; 
+  width: 100px; 
+}
+
+
+.button-container2 .button, .button-container2 .button2 {
+
+}
