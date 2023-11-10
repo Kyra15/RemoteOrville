@@ -1,25 +1,35 @@
 from flask import Flask, render_template, request
 from tankClass import Tank
 from datetime import date
+import pickle
 import time
 
 tank = Tank()
 app = Flask(__name__)
-date = date.today().strftime("%B %d, %y")
+today = date.today().strftime("%B %d, %y")
 
-logdict = {}
+def pickleload(file): 
+    f.open(file, "rb")
+    returndict = pickle.load(f)
+    f.close()
+    return returndict
 
-f.open
+def picklewrite(file, dictio):
+    f.open(file, "wb")
+    pickle.dump(dictio, f)
+    f.close()
 
 @app.route('/')
 def default():
+    logdict = pickleload("logdict.pkl")
+    logdict[today] = None
     return render_template('index.html')
     
 
 @app.route('/moving', methods=['POST'])
 def home():
-    button = request.json
-    pressed = button.get('button')
+    data = request.json
+    pressed = data.get('button')
     if pressed == "forward" or pressed == "go":
         tank.forward()
         logdict.append(pressed)
@@ -33,8 +43,14 @@ def home():
         tank.backward()
     else:
         tank.stop()
-    return "Moved"
+    return "Movement Successful"
 
+@app.route('/login', methods=['GET', 'POST']
+def loginpage():
+    data = request.json
+    user = data.get('username')
+    psswd = data.get('password')
+    return "Login Successful"
 
 if __name__ == '__main__':
     app.run(debug=True, host=0.0.0.0, port=4200)
