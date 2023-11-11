@@ -10,7 +10,7 @@ tank = Tank()
 # create the flask server
 app = Flask(__name__)
 
-# this is the main page, which will first load the logdict pickle file to a dictionary and then create a key with today's date
+# this is the main page, which will just show the html gui
 @app.route('/')
 def default():
     return render_template('index.html')
