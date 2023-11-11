@@ -18,7 +18,7 @@ def default():
 # this is the endpoint for the API, it gets a json file of the data from the html page and sets all the data from the 'button' key to a variable
 # then, it checks what that button data is, calls the appropriate function, and adds that movement to the log dictionary
 @app.route('/moving', methods=['POST'])
-def home():
+def moved():
     data = request.json
     pressed = data.get('button')
     if pressed == "forward" or pressed == "go":
